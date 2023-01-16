@@ -1,0 +1,34 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.nav-bar {
+    width: 100%;
+    height: 80px;
+    padding: 10px 200px;
+    display: flex;
+    align-items: center;
+    background-color: aquamarine;
+}
+
+.nav-bar ul {
+    width: 100%;
+    padding: 0 50px;
+    align-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: auto 0;
+}
+
+.nav-bar ul li {
+    list-style: none;
+    font-size: 1.3em;
+}
+
+.nav-bar ul li a {
+    text-decoration: none;
+}
+
