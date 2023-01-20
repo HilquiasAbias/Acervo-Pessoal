@@ -1,0 +1,19 @@
+{% extends "app/base.html" %}
+{% load static %}
+
+{% block dashboard_menu %}
+<li class="list active"> <!-- active -->
+    <b></b>
+    <b></b>
+    <a href="#">
+        <span class="icon">
+            <ion-icon name="contact"></ion-icon>
+        </span>
+        <span class="tittle">Painel de controle</span>
+    </a>
+</li>
+{% endblock dashboard_menu %}
+
+{% block content %}
+<h2>Bem vindo, {{ user.username }}.</h2>
+{% endblock content %}
