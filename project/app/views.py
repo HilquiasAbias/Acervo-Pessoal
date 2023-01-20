@@ -1,4 +1,4 @@
-from django.http import HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -25,6 +25,15 @@ class ItensView(LoginRequiredMixin, TemplateView):
 
     def post(self, request, *args, **kwargs):
         return HttpResponseRedirect(reverse('acervo:index'))
+
+class BooksView(LoginRequiredMixin, TemplateView):
+    pass
+
+class LendingsView(LoginRequiredMixin, TemplateView):
+    pass
+
+class ContactsView(LoginRequiredMixin, TemplateView):
+    pass
 
 class RegisterView(TemplateView):
     def get(self, request, *args, **kwargs):
