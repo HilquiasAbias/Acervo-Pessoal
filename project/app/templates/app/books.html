@@ -1,0 +1,20 @@
+{% extends "app/base.html" %}
+{% load static %}
+
+{% block books_menu %}
+<li class="list active">
+    <b></b>
+    <b></b>
+    <a href="{% url 'books' %}">
+        <span class="icon">
+            <ion-icon name="book-outline"></ion-icon>
+        </span>
+        <span class="tittle">Livros</span>
+    </a>
+</li>
+{% endblock books_menu %}
+
+{% block content %}
+<h2>Seus livros</h2>
+<h4>{{ books.title }}</h4>
+{% endblock content %}
