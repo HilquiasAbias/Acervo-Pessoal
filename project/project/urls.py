@@ -6,8 +6,7 @@ from django.contrib.auth.forms import PasswordChangeForm
 form_class = PasswordChangeForm
 
 urlpatterns = [
+    path('', RedirectView.as_view(url='acervo/')),
     path('admin/', admin.site.urls),
     path('acervo/', include('app.urls')),
-    path('accounts/', include('accounts.urls')),
-    path('accounts/', include('django.contrib.auth.urls')),
 ]

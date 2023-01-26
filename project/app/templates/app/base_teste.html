@@ -1,0 +1,98 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'app/css/base.css' %}">
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js" defer></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js" defer></script>
+    <script src="{% static 'app/js/utils.js' %}" defer></script>
+    <title>Acervo pessoal</title>
+</head>
+
+<body>
+    <div class="navigation">
+        <ul id="nav-list" onclick="toggleAction()">
+            <li class="1 list active">
+                <b></b>
+                <b></b>
+                <a href="#" id="1">
+                    <span class="1 icon">
+                        <ion-icon name="person-outline"></ion-icon>
+                    </span>
+                    <span class="1 tittle">Perfil</span>
+                </a>
+            </li>
+            <li class="2 list">
+                <b></b>
+                <b></b>
+                <a href="#" id="2">
+                    <span class="2 icon">
+                        <ion-icon name="book-outline"></ion-icon>
+                    </span>
+                    <span class="2 tittle">Livros</span>
+                </a>
+            </li>
+            <li class="3 list">
+                <b></b>
+                <b></b>
+                <a href="#" id="3">
+                    <span class="3 icon">
+                        <ion-icon name="albums-outline"></ion-icon>
+                    </span>
+                    <span class="3 tittle">Itens</span>
+                </a>
+            </li>
+            <li class="4 list">
+                <b></b>
+                <b></b>
+                <a href="#" id="4">
+                    <span class="4 icon">
+                        <ion-icon name="people-outline"></ion-icon>
+                    </span>
+                    <span class="4 tittle">Contatos</span>
+                </a>
+            </li>
+            <li class="5 list">
+                <b></b>
+                <b></b>
+                <a href="#" id="5">
+                    <span class="5 icon">
+                        <ion-icon name="folder-outline"></ion-icon>
+                    </span>
+                    <span class="5 tittle">Empréstimos</span>
+                </a>
+            </li>
+            <li class="list">
+                <b></b>
+                <b></b>
+                <a href="#">
+                    <span class="icon">
+                        <ion-icon name="log-out-outline"></ion-icon>
+                    </span>
+                    <span class="tittle">Sair</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div id="action" display="hidden">{{ action }}</div>
+
+    <div class="content">
+        {% if action == 1 %}
+        <h3>action 1</h3>
+        {% elif action == 2 %}
+        <h3>action 2</h3>
+        {% elif action == 3 %}
+        <h3>action 3</h3>
+        {% elif action == 4 %}
+        <h3>action 4</h3>
+        {% elif action == 5 %}
+        <h3>action 5</h3>
+        {% endif %}
+    </div>
+</body>
+</html>

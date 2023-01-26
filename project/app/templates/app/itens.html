@@ -1,0 +1,20 @@
+{% extends "app/base.html" %}
+{% load static %}
+
+{% block itens_menu %}
+<li class="list active">
+    <b></b>
+    <b></b>
+    <a href="{% url 'itens' %}">
+        <span class="icon">
+            <ion-icon name="albums-outline"></ion-icon>
+        </span>
+        <span class="tittle">Itens</span>
+    </a>
+</li>
+{% endblock itens_menu %}
+
+{% block content %}
+<h2>Seus itens</h2>
+<h4>{{ itens.name }}</h4>
+{% endblock content %}
