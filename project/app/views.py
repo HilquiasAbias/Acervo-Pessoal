@@ -29,61 +29,26 @@ class TestView(LoginRequiredMixin, TemplateView):
         })
     
     def post(self, request):
-        # if self.action == 2: itens
-        # if self.action == 3: books
-        # if self.action == 4: contacts
-        # if self.action == 5: lendings???
+        if self.action == 2: 
+            pass # itens
+        if self.action == 3:
+            pass # books
+        if self.action == 4:
+            pass # contacts
+        if self.action == 5:
+            pass # lendings???
         pass
 
 class IndexView(TemplateView):
     def get(self, request, *args, **kwargs):
         return render(request, 'app/index.html')
 
-class DashboardView(LoginRequiredMixin, TemplateView): # 1
-    def get(self, request, *args, **kwargs):
-        user = request.user
-        return render(request, 'app/dashboard.html', {'user': user})
+# class LoginView(TemplateView):
+#     def get(self, request, *args, **kwargs):
+#         return render(request, 'app/login.html')
 
-class ItensView(LoginRequiredMixin, TemplateView): # 2
-    def get(self, request, *args, **kwargs):
-        user = request.user
-        itens = Item.objects.filter(user=user)[1] # ALL, FILTER OU GET ???
-        print(user)
-        print(itens)
-        return render(request, 'app/itens.html', {'user': user, 'itens': itens}) #
-
-    def post(self, request, *args, **kwargs):
-        return HttpResponseRedirect(reverse('acervo:index'))
-
-class BooksView(LoginRequiredMixin, TemplateView): # 3
-    def get(self, request, *args, **kwargs):
-        user = request.user
-        books = Book.objects.filter(user=user)[1]
-        return render(request, 'app/books.html', {'user': user, 'books': books}) #
-
-    def post(self, request, *args, **kwargs):
-        return HttpResponseRedirect(reverse('acervo:index'))
-
-class ContactsView(LoginRequiredMixin, TemplateView): # 4
-    def get(self, request, *args, **kwargs):
-        user = request.user
-        contacts = Contact.objects.filter(user=user)[1]
-        return render(request, 'app/contacts.html', {'user': user, 'contacts': contacts}) #
-
-    def post(self, request, *args, **kwargs):
-        return HttpResponseRedirect(reverse('acervo:index'))
-
-class LendingsView(LoginRequiredMixin, TemplateView): # 5
-    def get(self, request, *args, **kwargs):
-        user = request.user
-        lendingItens = LendingItem.objects.filter(user=user)
-        lendingBooks = LendingBook.objects.filter(user=user)
-        
-        return render(request, 'app/lendings.html', { 'user': user, 'lendings': { 'on_itens': lendingItens, 'on_books': lendingBooks } })
-
-    def post(self, request, *args, **kwargs):
-        return HttpResponseRedirect(reverse('acervo:index'))
-
+#     def post(self, request, *args, **kwargs):
+#         pass
 
 class RegisterView(TemplateView):
     def get(self, request, *args, **kwargs):
@@ -114,3 +79,56 @@ class RegisterView(TemplateView):
         user.save()
 
         return render(request, 'app/login.html')
+
+# class ChangePasswordView(LoginRequiredMixin, TemplateView):
+#     def get(self, request, *args, **kwargs):
+#         return render(request, 'app/password_change.html')
+
+#     def post(self, request, *args, **kwargs):
+#         pass
+
+class DashboardView(LoginRequiredMixin, TemplateView): # 1
+    def get(self, request, *args, **kwargs):
+        user = request.user
+        return render(request, 'app/dashboard.html', {'user': user})
+
+class BooksView(LoginRequiredMixin, TemplateView): # 3
+    def get(self, request, *args, **kwargs):
+        user = request.user
+        books = Book.objects.filter(user=user)[1]
+        return render(request, 'app/books.html', {'user': user, 'books': books}) #
+
+    def post(self, request, *args, **kwargs):
+        return HttpResponseRedirect(reverse('acervo:index'))
+
+class ItensView(LoginRequiredMixin, TemplateView): # 2
+    def get(self, request, *args, **kwargs):
+        user = request.user
+        itens = Item.objects.filter(user=user)[1] # ALL, FILTER OU GET ???
+        print(user)
+        print(itens)
+        return render(request, 'app/itens.html', {'user': user, 'itens': itens}) #
+
+    def post(self, request, *args, **kwargs):
+        return HttpResponseRedirect(reverse('acervo:index'))
+
+class ContactsView(LoginRequiredMixin, TemplateView): # 4
+    def get(self, request, *args, **kwargs):
+        user = request.user
+        contacts = Contact.objects.filter(user=user)[1]
+        return render(request, 'app/contacts.html', {'user': user, 'contacts': contacts}) #
+
+    def post(self, request, *args, **kwargs):
+        return HttpResponseRedirect(reverse('acervo:index'))
+
+class LendingsView(LoginRequiredMixin, TemplateView): # 5
+    def get(self, request, *args, **kwargs):
+        user = request.user
+        lendingItens = LendingItem.objects.filter(user=user)
+        lendingBooks = LendingBook.objects.filter(user=user)
+        
+        return render(request, 'app/lendings.html', { 'user': user, 'lendings': { 'on_itens': lendingItens, 'on_books': lendingBooks } })
+
+    def post(self, request, *args, **kwargs):
+        return HttpResponseRedirect(reverse('acervo:index'))
+
