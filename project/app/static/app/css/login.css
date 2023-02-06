@@ -57,6 +57,7 @@ input.submit {
 input.submit:hover {
     background-color: var(--primary-color);
     color: var(--white-color);
+    transition: .4s;
 }
 
 .form-block .img {

@@ -15,21 +15,11 @@
 {% endblock contacts_menu %}
 
 {% block content %}
-<h2>Seus contatos</h2>
-<h4>{{ contacts.name }}</h4>
+<div class="get">
+    <p>get</p>
+</div>
 
-<div class="add-contact-area">
-    <h2>adcionar contato</h2>
-    <form action="{% url 'contacts' %}" method="post">
-        {% csrf_token %}
-        <div class="form-control">
-            <label for="name">Nome</label>
-            <input type="text" name="name">
-        </div>
-        <div class="form-control">
-            <label for="email">E-mail</label>
-            <input type="email" name="email">
-        </div>
-    </form>
+<div class="post">
+    <p>post</p>
 </div>
 {% endblock content %}

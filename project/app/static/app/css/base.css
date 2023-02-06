@@ -20,7 +20,23 @@ body {
 }
 
 .content {
+    height: 100vh;
     margin-left: 17.5%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 50px;
+}
+
+.dashboard-content {
+
+}
+
+.get {
+    border-right: 1.5px solid var(--primary-color-heavy);
+}
+
+.get, .post {
+    text-align: center;
 }
 
 .content .title-content {

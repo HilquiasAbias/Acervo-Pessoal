@@ -15,6 +15,27 @@
 {% endblock books_menu %}
 
 {% block content %}
-<h2>Seus livros</h2>
-<h4>{{ books.title }}</h4>
+
+
+
+<div class="get">
+    <h2>Seus livros</h2>
+    <br>
+
+    <ul class="content-list">
+        {% for book in books %}
+        <li class="element-list">
+            {{ book.title }} <br>
+            {{ book.author }} <br>
+            {{ book.year }} <br>
+        </li>
+        {% endfor %}
+    </ul>
+
+</div>
+
+<div class="post">
+    <p>post</p>
+</div>
+
 {% endblock content %}
