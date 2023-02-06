@@ -6,15 +6,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'app/css/index.css' %}">
+    <title>Acervo pessoal</title>
 </head>
 <body>
-    <h1>Seu acervo pessoal digital!</h1><br><br>
-    <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis rem earum harum, culpa dicta id ducimus ut sequi at laborum mollitia voluptate iusto pariatur in ea soluta ipsam alias eum.
-        Labore commodi cum praesentium obcaecati voluptates explicabo, officiis similique sunt sit dolorem, in molestiae nobis deleniti? Eveniet ducimus nemo reiciendis, quas excepturi minus voluptatem! Consequatur recusandae cumque cum enim exercitationem.
-    </p><br><br>
-    <a href="{% url 'login' %}">Acesse sua conta</a><br><br>
-    <a href="{% url 'register' %}">Faça sua conta</a>
+    <h1 class="title">Seu acervo pessoal</h1>
+    <p class="text">
+        Este é um acervo pessoal digital, ideal para você guardar seus livros e itens preferidos <br>
+        além disso você pode manter uma lista de contatos para fazer empréstimos de seus itens e livros, <br>
+        e a melhor parte é que tudo isso é gratuito! faça sua conta é rapidinho.
+    </p>
+    <div class="links">
+        <a href="{% url 'login' %}">Acesse sua conta</a>
+        <a href="{% url 'register' %}">Faça sua conta</a>
+    </div>
+
+
+
+    <img src="{% static 'app/img/wavesOpacity.svg' %}" alt="" class="custom-shape-divider-bottom-1675550807">
 </body>
 </html>
