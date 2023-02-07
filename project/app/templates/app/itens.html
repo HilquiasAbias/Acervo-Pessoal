@@ -16,10 +16,20 @@
 
 {% block content %}
 <div class="get">
-    <p>get</p>
+    <h2>Seus itens</h2>
+    <br>
+
+    <ul class="content-list">
+        {% for item in itens %}
+        <li class="element-list">
+            <span class="item-name">{{ item.name }}</span>
+            <span class="item-description">{{ item.description }}</span>
+        </li>
+        {% endfor %}
+    </ul>
 </div>
 
 <div class="post">
-    <p>post</p>
+    <h2>Adcione um item</h2>
 </div>
 {% endblock content %}

@@ -16,10 +16,20 @@
 
 {% block content %}
 <div class="get">
-    <p>get</p>
+    <h2>Seus contatos</h2>
+    <br>
+
+    <ul class="content-list">
+        {% for contact in contacts %}
+        <li class="element-list">
+            <span class="contact-name">{{ contact.name }}</span>
+            <span class="contact-email">{{ contact.email }}</span>
+        </li>
+        {% endfor %}
+    </ul>
 </div>
 
 <div class="post">
-    <p>post</p>
+    <h2>Adcione um contato</h2>
 </div>
 {% endblock content %}

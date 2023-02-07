@@ -20,6 +20,7 @@ body {
     display: flex;
     flex-direction: column;
     background-color: var(--white-color);
+    padding-top: 7%;
 }
 
 .title {

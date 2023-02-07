@@ -25,9 +25,9 @@
     <ul class="content-list">
         {% for book in books %}
         <li class="element-list">
-            {{ book.title }} <br>
-            {{ book.author }} <br>
-            {{ book.year }} <br>
+            <span class="book-title">{{ book.title }}</span>
+            <span class="book-author">{{ book.author }}</span>
+            <span class="book-year">{{ book.year }}</span>
         </li>
         {% endfor %}
     </ul>
@@ -35,7 +35,7 @@
 </div>
 
 <div class="post">
-    <p>post</p>
+    <h2>Adcione um livro</h2>
 </div>
 
 {% endblock content %}

@@ -16,10 +16,33 @@
 
 {% block content %}
 <div class="get">
-    <p>get</p>
+    <h2>Seus empréstimos</h2>
+    <br>
+
+    <h3 class="subtitle">Livros:</h3>
+    <ul class="content-list">
+        {% for lendingBook in lendingBooks %}
+        <li class="element-list">
+            <span class="lendingBook-contact">{{ lendingBook.contact }}</span>
+            <span class="lendingBook-book">{{ lendingBook.book }}</span>
+            <span class="lendingBook-date">{{ lendingBook.started }}</span>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <h3 class="subtitle">Itens:</h3>
+    <ul class="content-list">
+        {% for lendingItem in lendingItens %}
+        <li class="element-list">
+            <span class="lendingItem-contact">{{ lendingItem.contact }}</span>
+            <span class="lendingItem-item">{{ lendingItem.item }}</span>
+            <span class="lendingItem-date">{{ lendingItem.started }}</span>
+        </li>
+        {% endfor %}
+    </ul>
 </div>
 
 <div class="post">
-    <p>post</p>
+    <h2>Adcione um empréstimo</h2>
 </div>
 {% endblock content %}

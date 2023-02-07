@@ -172,10 +172,8 @@ class LendingsView(LoginRequiredMixin, TemplateView): # 5
         lendingBooks = LendingBook.objects.filter(user=user)
         context = {
             'user': user, 
-            'lendings': {
-                'on_itens': lendingItens,
-                'on_books': lendingBooks
-            }
+            'lendingItens': lendingItens,
+            'lendingBooks': lendingBooks
         }
         return render(request, 'app/lendings.html', context)
 
