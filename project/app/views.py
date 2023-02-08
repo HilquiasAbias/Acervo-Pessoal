@@ -143,7 +143,18 @@ class BooksView(LoginRequiredMixin, TemplateView): # 3
         return render(request, 'app/books.html', {'user': user, 'books': books}) #
 
     def post(self, request, *args, **kwargs):
-        pass
+        title = request.POST['title']
+        author = request.POST['author']
+        year = request.POST['year']
+        book = Book.objects.create(title=title, author=author, year=year, user=request.user)
+        book.save()
+        return redirect('/acervo/livros')
+
+class DeleteBookView(LoginRequiredMixin, TemplateView):
+    def get(self, request, *args, **kwargs):
+        book = Book.objects.get(pk=kwargs['pk'])
+        book.delete()
+        return redirect('/acervo/livros')
 
 class ItensView(LoginRequiredMixin, TemplateView): # 2
     def get(self, request, *args, **kwargs):
@@ -154,7 +165,17 @@ class ItensView(LoginRequiredMixin, TemplateView): # 2
         return render(request, 'app/itens.html', {'user': user, 'itens': itens}) #
 
     def post(self, request, *args, **kwargs):
-        pass
+        name = request.POST['name']
+        description = request.POST['description']
+        item = Item.objects.create(name=name, description=description, user=request.user)
+        item.save()
+        return redirect('/acervo/itens')
+
+class DeleteItemView(LoginRequiredMixin, TemplateView):
+    def get(self, request, *args, **kwargs):
+        item = Item.objects.get(pk=kwargs['pk'])
+        item.delete()
+        return redirect('/acervo/itens')
 
 class ContactsView(LoginRequiredMixin, TemplateView): # 4
     def get(self, request, *args, **kwargs):
@@ -163,7 +184,17 @@ class ContactsView(LoginRequiredMixin, TemplateView): # 4
         return render(request, 'app/contacts.html', {'user': user, 'contacts': contacts}) #
 
     def post(self, request, *args, **kwargs):
-        pass
+        name = request.POST['name']
+        email = request.POST['email']
+        contact = Contact.objects.create(name=name, email=email, user=request.user)
+        contact.save()
+        return redirect('/acervo/contatos')
+
+class DeleteContactView(LoginRequiredMixin, TemplateView):
+    def get(self, request, *args, **kwargs):
+        contact = Contact.objects.get(pk=kwargs['pk'])
+        contact.delete()
+        return redirect('/acervo/contatos')
 
 class LendingsView(LoginRequiredMixin, TemplateView): # 5
     def get(self, request, *args, **kwargs):

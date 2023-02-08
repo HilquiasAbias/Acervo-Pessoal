@@ -1,6 +1,11 @@
 {% extends "app/base.html" %}
 {% load static %}
 
+{% block styles %}
+<link rel="stylesheet" href="{% static 'app/css/base.css' %}">
+<link rel="stylesheet" href="{% static 'app/css/withModels.css' %}">
+{% endblock styles %}
+
 {% block itens_menu %}
 <li class="list active">
     <b></b>
@@ -15,21 +20,42 @@
 {% endblock itens_menu %}
 
 {% block content %}
-<div class="get">
-    <h2>Seus itens</h2>
-    <br>
-
-    <ul class="content-list">
-        {% for item in itens %}
-        <li class="element-list">
-            <span class="item-name">{{ item.name }}</span>
-            <span class="item-description">{{ item.description }}</span>
-        </li>
-        {% endfor %}
-    </ul>
-</div>
-
-<div class="post">
-    <h2>Adcione um item</h2>
+<div class="content">
+    <div class="get">
+        <h2>Seus itens</h2>
+        <br>
+    
+        <ul class="content-list">
+            {% for item in itens %}
+            <li class="element-list">
+                <div class="item-attributes">
+                    <span class="item-name">{{ item.name }}</span>
+                    <span class="item-description">{{ item.description }}</span>
+                </div>
+                <div class="item-options">
+                    <a href="{% url 'delete_item' item.id %}" class="">Apagar</a>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    
+    <div class="post">
+        <h2>Adcione um item</h2>
+        <br>
+    
+        <form action="{% url 'itens' %}" class="add-item-form" method="post">
+            {% csrf_token %}
+            <div class="add-form-group">
+                <label for="name">Nome:</label>
+                <input type="text" name="name" />
+            </div>
+            <div class="add-form-group">
+                <label for="description">Descrição:</label>
+                <textarea name="description" id="" cols="20" rows="5"></textarea>
+            </div>
+            <input type="submit" value="Adcionar">
+        </form>
+    </div>
 </div>
 {% endblock content %}

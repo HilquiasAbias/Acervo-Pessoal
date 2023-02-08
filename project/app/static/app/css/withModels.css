@@ -1,0 +1,36 @@
+.content {
+    height: 100vh;
+    margin-left: 13.3%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 50px;
+}
+
+.get {
+    border-right: 1.5px solid var(--primary-color-heavy);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+}
+
+
+.get .content-list {
+    width: 80%;
+    height: 80%;
+}
+
+.get .content-list .element-list {
+    margin: 5px 15px 25px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--secundary-color);
+    border-radius: 7px;
+}
+
+.get, .post {
+    text-align: center;
+}
