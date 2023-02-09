@@ -63,12 +63,13 @@ input.submit:hover {
 .form-block .img {
     width: 30%;
     height: 80%;
+    display: flex;
 }
 
 .form-block .img img {
     width: 100%;
     height: 100%;
-    padding: 15% 0 0;
+    justify-self: start;
 }
 
 .block-auth {

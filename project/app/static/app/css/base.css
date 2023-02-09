@@ -19,6 +19,12 @@ body {
     background-color: var(--white-color);
 }
 
+.content {
+    height: 100vh;
+    margin-left: 17.3%;
+    padding: 30px;
+}
+
 
 .title-content {
     text-align: center;
@@ -28,7 +34,7 @@ body {
     position: fixed;
     top: .1px;
     bottom: .1px;
-    width: 13%;
+    width: 17%;
     box-sizing: initial;
     border-left: 5px solid var(--primary-color);
     background-color: var(--primary-color);
@@ -141,3 +147,6 @@ body {
     white-space: normal;
 }
 
+@media (max-width:1050px) {
+    
+}
