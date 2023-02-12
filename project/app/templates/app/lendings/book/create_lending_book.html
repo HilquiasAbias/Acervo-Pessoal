@@ -1,0 +1,61 @@
+{% extends "app/base.html" %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'app/css/base.css' %}">
+<link rel="stylesheet" href="{% static 'app/css/withModels.css' %}">
+<script src="{% static 'app/js/utils.js' %}"></script>
+{% endblock styles %}
+
+{% block lendings_menu %}
+<li class="list active">
+    <b></b>
+    <b></b>
+    <a href="{% url 'lendings' %}">
+        <span class="icon">
+            <ion-icon name="folder-outline"></ion-icon>
+        </span>
+        <span class="tittle">Empréstimos</span>
+    </a>
+</li>
+{% endblock lendings_menu %}
+
+{% block content %}
+
+<div class="post">
+    <h2>Emprestar um livro</h2>
+    <br>
+
+    <form action="{% url 'create_lending_book' %}" class="add-item-form" method="post">
+        {% csrf_token %}
+        <div class="add-form-group">
+            <label for="book">Livro:</label>
+            <select name="book" class="filters">
+                <option value="" selected="selected" disabled>Selecionar</option>
+                {% for book in books %}
+                    {% if not book.on_lending %}
+                    <option value="{{book.id}}" >{{book}}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="add-form-group">
+            <label for="contact">Contato:</label>
+            <select name="contact" class="filters">
+                <option value="" selected="selected" disabled>Selecionar</option>
+                {% for contact in contacts %}
+                    {% if not contact.on_lending %}
+                    <option value="{{contact.id}}" >{{contact}}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+
+        <input type="submit" value="Adcionar">
+        <a href="{% url 'lendings' %}">Cancelar</a>
+
+    </form>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,125 @@
+{% extends "app/base.html" %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'app/css/base.css' %}">
+<link rel="stylesheet" href="{% static 'app/css/withModels.css' %}">
+<script src="{% static 'app/js/utils.js' %}"></script>
+{% endblock styles %}
+
+{% block lendings_menu %}
+<li class="list active">
+    <b></b>
+    <b></b>
+    <a href="{% url 'lendings' %}">
+        <span class="icon">
+            <ion-icon name="folder-outline"></ion-icon>
+        </span>
+        <span class="tittle">Empréstimos</span>
+    </a>
+</li>
+{% endblock lendings_menu %}
+
+{% block content %}
+<div class="get">
+    <h2>Seus empréstimos</h2>
+    <br>
+    
+    <div class="search-and-add">
+        <h3>Itens</h3>
+        <form action="{% url 'search_lending' %}" method="post">
+            {% csrf_token %}
+            
+            <input type="text" class="search"
+            placeholder="Buscar item" name="search-item" value="{{search_item}}">
+            
+            <select name="filters-item" class="filters" onchange="this.form.submit()">
+                <option class="fs-7" value="0" selected="selected" disabled>Filtragem</option>
+                <option value="1" class="fs-7">Mais Recentes</option>
+                <option value="2" class="fs-7">Mais Antigos</option>
+                <option value="3" class="fs-7">Finalizados</option>
+                <option value="4" class="fs-7">Não finalizados</option>
+            </select>
+
+            <input type="hidden" name="search-type" value="item">
+        </form>
+
+
+        <a href="{% url 'create_lending_item' %}" class="icon">
+            <ion-icon name="add-outline"></ion-icon>
+        </a>
+
+    
+    </div>
+
+    <ul class="content-list">
+        {% for lendingItem in lendingItens %}
+        <li class="element-list">
+            <div class="card-elements">
+                <h3 class="card-title"><span class="card-span">Contato:</span> {{ lendingItem.contact }}</h3>
+                <p class="card-body"><span class="card-span">Item:</span> {{ lendingItem.item }}</p>
+                <p class="card-body"><span class="card-span">Inicio:</span> {{ lendingItem.started.date }}</p>
+            </div>
+            <div class="crud-options">
+                <a href="{% url 'update_lending_item' lendingItem.id %}" class="">Editar</a>
+                {% if lendingItem.on_lending %}
+                <a href="{% url 'end_lending_item' lendingItem.id %}" class="">Finalizar</a>
+                {% else %}
+                <a href="{% url 'delete_lending_item' lendingItem.id %}" class="">Apagar</a>
+                {% endif %}
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+
+</div>
+
+<div class="get">
+    <div class="search-and-add">
+        <h3>Livros</h3>
+        <form action="{% url 'search_lending' %}" method="post">
+            {% csrf_token %}
+            
+            <input type="text" class="search"
+            placeholder="Buscar livro" name="search-book" value="{{search_book}}">
+            
+            <select name="filters-book" class="filters" onchange="this.form.submit()">
+                <option class="fs-7" value="0" selected="selected" disabled>Filtragem</option>
+                <option value="1" class="fs-7">Mais Recentes</option>
+                <option value="2" class="fs-7">Mais Antigos</option>
+                <option value="3" class="fs-7">Finalizados</option>
+                <option value="4" class="fs-7">Não finalizados</option>
+            </select>
+
+            <input type="hidden" name="search-type" value="livro">
+        </form>
+
+
+        <a href="{% url 'create_lending_book' %}" class="icon">
+            <ion-icon name="add-outline"></ion-icon>
+        </a>
+
+    </div>
+
+    <ul class="content-list">
+        {% for lendingBook in lendingBooks %}
+        <li class="element-list">
+            <div class="card-elements">
+                <h3 class="card-title"><span class="card-span">Contato:</span> {{ lendingBook.contact }}</h3>
+                <p class="card-body"><span class="card-span">Livro:</span> {{ lendingBook.book }}</p>
+                <p class="card-body"><span class="card-span">Inicio:</span> {{ lendingBook.started.date }}</p>
+            </div>
+            <div class="crud-options">
+                <a href="{% url 'update_lending_book' lendingBook.id %}" class="">Editar</a>
+                {% if lendingBook.on_lending %}
+                <a href="{% url 'end_lending_book' lendingBook.id %}" class="">Finalizar</a>
+                {% else %}
+                <a href="{% url 'delete_lending_book' lendingBook.id %}" class="">Apagar</a>
+                {% endif %}
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+
+</div>
+{% endblock content %}

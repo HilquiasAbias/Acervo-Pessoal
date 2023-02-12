@@ -1,0 +1,43 @@
+{% extends "app/base.html" %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'app/css/base.css' %}">
+<link rel="stylesheet" href="{% static 'app/css/withModels.css' %}">
+<script src="{% static 'app/js/utils.js' %}"></script>
+{% endblock styles %}
+
+{% block contacts_menu %}
+<li class="list active">
+    <b></b>
+    <b></b>
+    <a href="{% url 'contacts' %}">
+        <span class="icon">
+            <ion-icon name="people-outline"></ion-icon>
+        </span>
+        <span class="tittle">Contatos</span>
+    </a>
+</li>
+{% endblock contacts_menu %}
+
+{% block content %}
+<div class="put">
+    <h2>Editar contato</h2>
+    <br>
+
+    <form action="{% url 'update_contact' contact.id %}" class="add-contact-form" method="post">
+        {% csrf_token %}
+        <div class="add-form-group">
+            <label for="name">Nome:</label>
+            <input type="text" name="name" value="{{ contact.name }}"/>
+        </div>
+        <div class="add-form-group">
+            <label for="email">E-mail:</label>
+            <input type="email" name="email" value="{{ contact.email }}"/>
+        </div>
+        <input type="submit" value="Editar">
+        <a href="{% url 'contacts' %}">Cancelar</a>
+    </form>
+</div>
+
+{% endblock content %}

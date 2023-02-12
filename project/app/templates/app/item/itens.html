@@ -1,0 +1,67 @@
+{% extends "app/base.html" %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'app/css/base.css' %}">
+<link rel="stylesheet" href="{% static 'app/css/withModels.css' %}">
+<script src="{% static 'app/js/utils.js' %}"></script>
+{% endblock styles %}
+
+{% block itens_menu %}
+<li class="list active">
+    <b></b>
+    <b></b>
+    <a href="{% url 'itens' %}">
+        <span class="icon">
+            <ion-icon name="albums-outline"></ion-icon>
+        </span>
+        <span class="tittle">Itens</span>
+    </a>
+</li>
+{% endblock itens_menu %}
+
+{% block content %}
+<div class="get">
+    <h2>Seus itens</h2>
+    <br>
+    
+    <div class="search-and-add">
+        <form action="{% url 'search_item' %}" method="post">
+            {% csrf_token %}
+            
+            <input type="text" class="search"
+            placeholder="Buscar item" name="search" value="{{search}}">
+            
+            <select name="filters" class="filters" onchange="this.form.submit()">
+                <option class="fs-7" value="0" selected="selected" disabled>Filtragem</option>
+                <option value="1" class="fs-7">Mais Recentes</option>
+                <option value="2" class="fs-7">Mais Antigos</option>
+            </select>
+        </form>
+
+
+        <a href="{% url 'create_item' %}" class="icon">
+            <ion-icon name="add-outline"></ion-icon>
+        </a>
+
+    
+    </div>
+
+    <ul class="content-list">
+        {% for item in itens %}
+        <li class="element-list">
+            <div class="card-elements">
+                <h3 class="card-title"><span class="card-span">Nome:</span> {{ item.name }}</h3>
+                <p class="card-body"><span class="card-span">Descrição:</span> {{ item.description }}</p>
+            </div>
+            <div class="crud-options">
+                <a href="{% url 'update_item' item.id %}" class="">Editar</a>
+                <a href="{% url 'delete_item' item.id %}" class="">Apagar</a>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+
+</div>
+
+{% endblock content %}

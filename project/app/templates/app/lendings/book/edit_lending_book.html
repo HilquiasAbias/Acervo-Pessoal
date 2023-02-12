@@ -1,0 +1,58 @@
+{% extends "app/base.html" %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'app/css/base.css' %}">
+<link rel="stylesheet" href="{% static 'app/css/withModels.css' %}">
+<script src="{% static 'app/js/utils.js' %}"></script>
+{% endblock styles %}
+
+{% block lendings_menu %}
+<li class="list active">
+    <b></b>
+    <b></b>
+    <a href="{% url 'lendings' %}">
+        <span class="icon">
+            <ion-icon name="folder-outline"></ion-icon>
+        </span>
+        <span class="tittle">Empréstimos</span>
+    </a>
+</li>
+{% endblock lendings_menu %}
+
+{% block content %}
+<div class="put">
+    <h2>Editar emprestimo</h2>
+    <br>
+    <form action="{% url 'update_lending_book' lending_book.id %}" class="add-item-form" method="post">
+        {% csrf_token %}
+        <div class="add-form-group">
+            <label for="book">Livro:</label>
+            <select name="book" class="filters">
+                <option value="{{current_book}}" selected="selected">{{current_book}}</option>
+                {% for book in itens %}
+                    {% if book.id != current_book.id %}
+                    <option value="{{book.id}}" >{{book}}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="add-form-group">
+            <label for="contact">Contato:</label>
+            <select name="contact" class="filters">
+                <option value="{{current_contact}}" selected="selected">{{current_contact}}</option>
+                {% for contact in contacts %}
+                    {% if contact.id != current_contact.id %}
+                    <option value="{{contact.id}}" >{{contact}}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+
+        <input type="submit" value="Editar">
+        <a href="{% url 'lendings' %}">Cancelar</a>
+    </form>
+</div>
+
+{% endblock content %}

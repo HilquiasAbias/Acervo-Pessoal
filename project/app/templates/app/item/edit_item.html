@@ -1,0 +1,43 @@
+{% extends "app/base.html" %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'app/css/base.css' %}">
+<link rel="stylesheet" href="{% static 'app/css/withModels.css' %}">
+<script src="{% static 'app/js/utils.js' %}"></script>
+{% endblock styles %}
+
+{% block itens_menu %}
+<li class="list active">
+    <b></b>
+    <b></b>
+    <a href="{% url 'itens' %}">
+        <span class="icon">
+            <ion-icon name="albums-outline"></ion-icon>
+        </span>
+        <span class="tittle">Itens</span>
+    </a>
+</li>
+{% endblock itens_menu %}
+
+{% block content %}
+<div class="put">
+    <h2>Editar item</h2>
+    <br>
+
+    <form action="{% url 'update_item' item.id %}" class="add-item-form" method="post">
+        {% csrf_token %}
+        <div class="add-form-group">
+            <label for="title">Titulo:</label>
+            <input type="text" name="title" value="{{ item.name }}"/>
+        </div>
+        <div class="add-form-group">
+            <label for="author">Autor:</label>
+            <input type="text" name="author" value="{{ item.description }}"/>
+        </div>
+        <input type="submit" value="Editar">
+        <a href="{% url 'itens' %}">Cancelar</a>
+    </form>
+</div>
+
+{% endblock content %}

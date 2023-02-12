@@ -1,0 +1,67 @@
+{% extends "app/base.html" %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'app/css/base.css' %}">
+<link rel="stylesheet" href="{% static 'app/css/withModels.css' %}">
+{% endblock styles %}
+
+{% block books_menu %}
+<li class="list active">
+    <b></b>
+    <b></b>
+    <a href="{% url 'books' %}">
+        <span class="icon">
+            <ion-icon name="book-outline"></ion-icon>
+        </span>
+        <span class="tittle">Livros</span>
+    </a>
+</li>
+{% endblock books_menu %}
+
+{% block content %}
+<div class="get">
+    <h2>Seus livros</h2>
+    <br>
+    
+    <div class="search-and-add">
+        <form action="{% url 'search_book' %}" method="post">
+            {% csrf_token %}
+            
+            <input type="text" class="search"
+            placeholder="Buscar livro" name="search" value="{{search}}">
+            
+            <select name="filters" class="filters" onchange="this.form.submit()">
+                <option class="fs-7" value="0" selected="selected" disabled>Filtragem</option>
+                <option value="1" class="fs-7">Mais Recentes</option>
+                <option value="2" class="fs-7">Mais Antigos</option>
+            </select>
+        </form>
+
+
+        <a href="{% url 'create_book' %}" class="icon">
+            <ion-icon name="add-outline"></ion-icon>
+        </a>
+
+    
+    </div>
+
+    <ul class="content-list">
+        {% for book in books %}
+        <li class="element-list">
+            <div class="card-elements">
+                <h3 class="card-title"><span class="card-span">Titulo:</span> {{ book.title }}</h3>
+                <p class="card-body"><span class="card-span">Autor:</span> {{ book.author }}</p>
+                <p class="card-body"><span class="card-span">Ano:</span> {{ book.year }}</p>
+            </div>
+            <div class="crud-options">
+                <a href="{% url 'update_book' book.id %}" class="">Editar</a>
+                <a href="{% url 'delete_book' book.id %}" class="">Apagar</a>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+
+</div>
+
+{% endblock content %}

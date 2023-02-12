@@ -1,3 +1,11 @@
+:root {
+    --primary-color: #4d5bf9;
+    --secundary-color: #1D1D1D;
+    --white-color: #e6e6fc;
+    --primary-color-light: #555fd1e8;
+    --primary-color-heavy: #2534db;
+}
+
 .two-sides-content {
     height: 100%;
     width: 100%;
@@ -5,8 +13,17 @@
     grid-template-columns: 1fr 1fr;
 }
 
+.search-and-add {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+    margin-bottom: 10px;
+    padding: 0 8px 5px;
+    border-bottom: 1px solid var(--secundary-color);
+}
+
 .get {
-    border-right: 1.5px solid var(--primary-color-heavy);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -15,21 +32,86 @@
 
 
 .get .content-list {
-    width: 80%;
+    margin: 15px 0;
+    width: 95%;
     height: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .get .content-list .element-list {
-    margin: 5px 15px 25px;
-    height: 100px;
+    width: 32.6%;
+    height: 180px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-color: white;
+    color: var(--primary-color);
     border: 1px solid var(--secundary-color);
     border-radius: 7px;
 }
 
+.get .content-list .element-list .card-elements {
+    /* width: 70%; */
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+
+.card-span {
+    color: var(--secundary-color);
+}
+
+.get .content-list .element-list .card-elements .card-title, .card-body {
+    align-self: flex-start;
+}
+
+.get .content-list .element-list .crud-options {
+    width: 100%;
+    padding: 15px 0;
+    border-top: 1px solid var(--secundary-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.get .content-list .element-list .crud-options a {
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.get .content-list .element-list .crud-options a:hover {
+    color: var(--secundary-color);
+}
+
 .get, .post {
     text-align: center;
+}
+
+
+.search-and-add .icon {
+    position: relative;
+    display: block;
+    min-width: 30px;
+    height: 30px;
+    line-height: 40px;
+    text-align: center;
+}
+
+.search-and-add .icon ion-icon {
+    font-size: 2em;
+    cursor: pointer;
+    color: var(--primary-color);
+}
+
+.search-and-add .icon ion-icon:hover {
+    
+}
+
+.filters {
+    color: var(--primary-color);
 }
