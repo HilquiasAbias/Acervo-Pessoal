@@ -39,6 +39,11 @@ class LoginView(TemplateView):
     def _authenticate_user(self, request, username, password):
         return authenticate(request, username=username, password=password)
 
+class LogoutView(TemplateView):
+    def get(self, request, *args, **kwargs):
+        logout(request)
+        return redirect('/acervo')
+
 class RegisterView(TemplateView):
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:

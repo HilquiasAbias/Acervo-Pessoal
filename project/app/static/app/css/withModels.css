@@ -92,6 +92,25 @@
     text-align: center;
 }
 
+.post {
+    margin: 15% auto;
+}
+
+.post .form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    border: 1px solid var(--secundary-color);
+    width: 40%;
+    margin: 0 auto;
+}
+
+.post .form .form-group {
+    margin: 5px 0;
+
+}
 
 .search-and-add .icon {
     position: relative;
@@ -106,10 +125,6 @@
     font-size: 2em;
     cursor: pointer;
     color: var(--primary-color);
-}
-
-.search-and-add .icon ion-icon:hover {
-    
 }
 
 .filters {

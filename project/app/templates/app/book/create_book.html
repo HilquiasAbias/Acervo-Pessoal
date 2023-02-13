@@ -26,17 +26,17 @@
     <h2>Adcione um livro</h2>
     <br>
 
-    <form action="{% url 'create_book' %}" class="add-book-form" method="post">
+    <form action="{% url 'create_book' %}" class="form" method="post">
         {% csrf_token %}
-        <div class="add-form-group">
+        <div class="form-group">
             <label for="title">Titulo:</label>
             <input type="text" name="title" />
         </div>
-        <div class="add-form-group">
+        <div class="form-group">
             <label for="author">Autor:</label>
             <input type="text" name="author" />
         </div>
-        <div class="add-form-group">
+        <div class="form-group">
             <label for="year">Ano:</label>
             <input type="text" name="year" />
         </div>
